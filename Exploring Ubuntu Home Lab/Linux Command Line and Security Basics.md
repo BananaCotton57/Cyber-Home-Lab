@@ -117,7 +117,25 @@ Here, I changed my current user to `sally`. In order to do this, however, I had 
 
 ## 7. Attempting to Create a User Using a Different Account
 
-While being logged in as `sally`, using the command, `sudo adduser earl`, will print the message, "*sally is not in the sudoers file. This incident will be reported*". This happens since `sally` does not have sudo privileges, so she cannot execute administrative commands with elevated permissions such as `sudo apt update`.
+While being logged in as `sally`, using the command, `sudo adduser earl`, will print the message, "*sally is not in the sudoers file. This incident will be reported*". This happens since `sally` does not have sudo privileges, so she cannot execute administrative commands with elevated permissions.
 
 ![Switching Users](images/image7.png)
+
+## 8. Deleting a User
+
+**Command:**
+
+```bash
+sudo userdel earl
+```
+
+Returning to my original user, `ngoj`, I added `earl` as a new user, and then used the command `sudo userdel earl`, to delete the user.
+
+![Deleting Users](images/image8.png)
+
+**Note:**
+
+The additional commands`less /etc/passwd` and `ps -u earl`, are not necessary for this task and can be ignored.
+
+
 
