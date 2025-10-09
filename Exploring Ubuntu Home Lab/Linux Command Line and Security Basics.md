@@ -227,7 +227,9 @@ This command is similar to making a user execute administrative permissions. Her
 
 ![Adding a User to a Group](images/image14.png)
 
-I added `sally` to the `cybersec` group and confirmed if she was in the group using the command: `groups sally`.
+I added `sally` to the `cybersec` group and confirmed that she was in the group using the command: `groups sally`.
+
+# Permissions and Access Control Lists
 
 
 
