@@ -17,15 +17,15 @@ This command lists all the packages on my system that have available updates. Fo
 
 - New version - The version available in the repository that can be installed
 
-![List of upgradeable packages](Exploring%20Ubuntu%20Home%20Lab/images/image1.png)
+![List of upgradeable packages](images/image1.png)
 
 ### For the second listing:
 
-- The package name is landscape-common
+- The package name is landscape-common.
 
-- The repository is jammy-updates
+- The repository is jammy-updates.
 
-- The architecture this update is available is arm64 systems
+- The architecture this update is available is arm64.systems
 
 - The current version of this package is 23.02-0ubuntu1-22.04.4
 
