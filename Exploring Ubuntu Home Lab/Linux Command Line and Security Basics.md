@@ -159,5 +159,18 @@ All of the commands in the Linux Command Line can be easily executed using the r
 
 It is best to instead use `sudo` to execute any command with administrative privileges instead, and root should only be used as a last resort or when absolutely necessary.
 
+## 11. Finding my User Id
+
+**Command:**
+```bash
+id
+```
+
+This command will display the user id, which is also named as `uid`. Other information is displayed alongside it.
+
+![id](images/image10.png)
+
+My `uid` has a value of 1000.
+
 
 
