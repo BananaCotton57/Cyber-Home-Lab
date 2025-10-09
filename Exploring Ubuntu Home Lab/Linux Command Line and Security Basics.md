@@ -217,4 +217,18 @@ The command above will create a new group in the system.
 
 I used this command to create a new group called `cybersec`.
 
+## 15. Adding a User to a Group
+
+```bash
+sudo usermod -aG <group> <username>
+```
+
+This command is similar to making a user execute administrative permissions. Here, I can add a user to a general group.
+
+![Adding a User to a Group](images/image14.png)
+
+I added `sally` to the `cybersec` group and confirmed if she was in the group using the command: `groups sally`.
+
+
+
 
