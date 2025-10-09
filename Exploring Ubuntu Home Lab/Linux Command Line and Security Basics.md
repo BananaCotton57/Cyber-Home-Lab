@@ -1,4 +1,4 @@
-# 1. Searching for Available Updates
+## 1. Searching for Available Updates
 
 **Command:**
 ```bash
@@ -17,7 +17,7 @@ This command lists all the packages on my system that have available updates. Fo
 
 - New version - The version available in the repository that can be installed
 
-![List of upgradeable packages](images/image1.png)
+![List of Upgradeable Packages](images/image1.png)
 
 ### For the second listing:
 
@@ -31,7 +31,7 @@ This command lists all the packages on my system that have available updates. Fo
 
 - The new version of this package is 23.02-0ubuntu1-22.04.6
 
-# 2. Updating and Upgrading the System
+## 2. Updating and Upgrading the System
 
 **Command (update):**
 ```bash
@@ -40,7 +40,7 @@ sudo apt update
 
 Using this command will download the latest package information from all my configured sources. This command will not upgrade any of those packages.
 
-![Command to update](images/image2.png)
+![Command to Update](images/image2.png)
 
 **Command (upgrade):**
 ```bash
@@ -55,7 +55,7 @@ This command will install all packages to their latest versions based on the upd
 
 One package, ```cloud-init```, was shown as "*held back.*" This is normal behavior for virtual machines and can be ignored.
 
-# 3. Rebooting the System
+## 3. Rebooting the System
 
 **Command:**
 ```bash 
@@ -63,3 +63,16 @@ sudo reboot
 ```
 
 This command restarts my system. It is also usually necessary to run it to ensure all updates were fully applied.
+
+# Users and Permissions
+
+## 4. Changing to the Root User
+
+**Command:**
+```bash
+sudo su root
+```
+
+Using this command switches the current user, ```ngoj```, to the root user. The prompt of the root user has a different color and style from a normal user, and it also is indicated by a ```#``` instead of ```$```.
+
+![Root User](images/image4.png)
