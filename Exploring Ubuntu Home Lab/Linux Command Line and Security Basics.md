@@ -31,7 +31,7 @@ This command lists all the packages on my system that have available updates. Fo
 
 - The new version of this package is 23.02-0ubuntu1-22.04.6
 
-# 2. Updating and Upgrading the system
+# 2. Updating and Upgrading the System
 
 **Command (update):**
 ```bash
@@ -54,3 +54,12 @@ This command will install all packages to their latest versions based on the upd
 **Note:**
 
 One package, ```cloud-init```, was shown as "*held back.*" This is normal behavior for virtual machines and can be ignored.
+
+# 3. Rebooting the System
+
+**Command:**
+```bash 
+sudo reboot
+```
+
+This command restarts my system. It is also usually necessary to run it to ensure all updates were fully applied.
