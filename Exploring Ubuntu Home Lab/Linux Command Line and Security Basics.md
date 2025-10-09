@@ -1,4 +1,4 @@
-### 1. Searching for Available Updates
+# 1. Searching for Available Updates
 
 **Command:**
 ```bash
@@ -19,7 +19,7 @@ This command lists all the packages on my system that have available updates. Fo
 
 ![List of upgradeable packages](Exploring%20Ubuntu%20Home%20Lab/images/image1.png)
 
-# For the second listing:
+### For the second listing:
 
 - The package name is landscape-common
 
