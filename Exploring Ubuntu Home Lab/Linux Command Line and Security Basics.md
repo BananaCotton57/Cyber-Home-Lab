@@ -64,7 +64,7 @@ sudo reboot
 
 This command restarts my system. It is also usually necessary to run it to ensure all updates were fully applied.
 
-# Users and Permissions
+# Users
 
 ## 4. Changing to the Root User
 
@@ -219,6 +219,8 @@ I used this command to create a new group called `cybersec`.
 
 ## 15. Adding a User to a Group
 
+**Command:**
+
 ```bash
 sudo usermod -aG <group> <username>
 ```
@@ -230,6 +232,27 @@ This command is similar to making a user execute administrative permissions. Her
 I added `sally` to the `cybersec` group and confirmed that she was in the group using the command: `groups sally`.
 
 # Permissions and Access Control Lists
+
+## 16. Checking Permissions of a Directory
+
+**Command:**
+
+```bash
+ls -ld <directory>
+```
+
+Using this command will let me check the permissions for a single directory.
+
+![Permissions of a Directory](images/image14.png)
+
+In my case, I used the command, `mkdir lab1`, to create a new directory called `lab1` in my home directory. Then, I used the command `ls -ld lab1` to check the permissions. 
+
+For this directory:
+- The owner, `ngoj`, can read, write, and execute the directory.
+- The group owner, `ngoj`, can also read, write, and execute the directory.
+- Other users can only read and execute the directory.
+
+
 
 
 
