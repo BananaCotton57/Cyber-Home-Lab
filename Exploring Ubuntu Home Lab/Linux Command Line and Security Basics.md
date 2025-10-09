@@ -172,5 +172,21 @@ This command will display the user id, which is also named as `uid`. Other infor
 
 My `uid` has a value of 1000.
 
+# Groups
+
+## 12. Finding the Groups Ubuntu Belongs to
+
+**Command:**
+
+```bash
+groups
+```
+
+This command will list out all the groups Ubuntu belongs to.
+
+![id](images/image11.png)
+
+Ubuntu is in seven groups: `ngoj`, `adm`, `cdrom`, `sudo`, `dip`, `plugdev`, and `lxd`. 
+
 
 
