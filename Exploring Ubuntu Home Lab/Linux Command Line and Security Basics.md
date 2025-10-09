@@ -99,7 +99,7 @@ is a Perl script that utilizes useradd, and it guided me through creating a home
 
 ![useradd and adduser](images/image5.png)
 
-In this picture, I added *bobby* with `useradd` and *sally* with `adduser`.
+In this picture, I added `bobby` with `useradd` and `sally` with `adduser`.
 
 ## 6. Changing the Current User
 
@@ -113,6 +113,11 @@ Using this command will switch the current user to another user.
 
 ![Switching Users](images/image6.png)
 
-Here, I changed my current user to sally. In order to do this, however, I had to enter sally's password.
+Here, I changed my current user to `sally`. In order to do this, however, I had to enter her password.
 
+## 7. Attempting to Create a User Using a Different Account
+
+While being logged in as `sally`, using the command, `sudo adduser earl`, will print the message, "*sally is not in the sudoers file. This incident will be reported*". This happens since `sally` does not have sudo privileges, so she cannot execute administrative commands with elevated permissions such as `sudo apt update`.
+
+![Switching Users](images/image7.png)
 
