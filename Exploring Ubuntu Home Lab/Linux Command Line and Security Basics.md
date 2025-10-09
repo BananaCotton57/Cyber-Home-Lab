@@ -199,9 +199,22 @@ sudo usermod -aG sudo <username>
 Using this command, I can make a user run `sudo` commands by adding them into the `sudo` group.
 - `-aG` means: append (`-a`) the user to a specific group (`-G`).
 
-![id](images/image12.png)
+![Giving a User Sudo Commands](images/image12.png)
 
 In this example, I added `sally` to the `sudo` group. To test if she can execute sudo command, I added a new user, `evan`, under her account. I then checked `evan`'s group membership with the command: `groups evan`, which confirmed that this user was successfully created.
 
+## 14. Creating a New Group
+
+**Command:**
+
+```bash
+sudo groupadd <group>
+```
+
+The command above will create a new group in the system.
+
+![Giving a User Sudo Commands](images/image13.png)
+
+I used this command to create a new group called `cybersec`.
 
 
