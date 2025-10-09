@@ -306,9 +306,36 @@ getfacl <file>
 
 Unlike `ls -la <file>`, this command allows me to not only view the permissions for the owner, the group owner, and other users, but it also lets me view permissions for individual users or groups. 
 
-![Access Control List](images/image20.png)
+![Getting Access Control List](images/image20.png)
 
 No access control lists are set for this file currently.
+
+## 20. Setting Access Control Lists of a File
+
+**Command:**
+```bash
+setfacl <-m, -x> <u, g>:<name>:<r,w,x> <file, directory>
+```
+
+This command allows me to set access control lists. 
+
+The first argument can either modify the ACL of a file/directory (`-m`) or remove any ACL entries (`-x`). 
+
+The second argument specifies the file/directory type. For a user, I can use `u` and for a group, I can use `g`.
+
+The third argument specifies the name of the user or group.
+
+The fourth argument specifies whether to give the user/group read, write, or execute permissions
+
+The final argument specifies the name of the file/directory.
+
+![Getting Access Control List](images/image21.png)
+
+I used the `setfacl` command to give the user, `sally`, read and write permissions on the `helloWorld` file. To verify, I used the command `getfacl helloWorld`. The output generated now has `user:sally:rw-`, meaning that sally has been successfully given read and write permissions on the file.
+
+
+
+
 
 
 
