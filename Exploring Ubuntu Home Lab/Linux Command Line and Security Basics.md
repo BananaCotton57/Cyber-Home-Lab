@@ -148,5 +148,16 @@ Using the command above, I changed sally's password. To check if her password su
 
 ![Changing User Password](images/image9.png)
 
+## 9. Using a Non-Root User
+
+For the rest of the tasks, I used the `ubuntu` user.
+
+All of the commands in the Linux Command Line can be easily executed using the root user, but it is a bad practice because:
+
+- Root can modify any file or setting, including sensitive files like `etc/passwd`. Serious consequences can occur if sensitive files are modified accidentally.
+- It improves security, as malicious scripts and commands have limited permissions.
+
+It is best to instead use `sudo` to execute any command with administrative privileges instead, and root should only be used as a last resort or when absolutely necessary.
+
 
 
