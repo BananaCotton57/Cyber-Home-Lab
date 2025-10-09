@@ -148,7 +148,7 @@ Using the command above, I changed sally's password. To check if her password su
 
 ![Changing User Password](images/image9.png)
 
-## 9. Using a Non-Root User
+## 10. Using a Non-Root User
 
 For the rest of the tasks, I used the `ubuntu` user.
 
