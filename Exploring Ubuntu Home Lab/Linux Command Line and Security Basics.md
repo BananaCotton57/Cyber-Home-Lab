@@ -144,7 +144,7 @@ The additional commands`less /etc/passwd` and `ps -u earl`, are not necessary fo
 sudo passwd <username>
 ```
 
-Using the command above, I changed sally's password. To check if her password successfully changed, I logged into her account using the new password.
+Using the command above, I changed `sally`'s password. To check if her password successfully changed, I logged into her account using the new password.
 
 ![Changing User Password](images/image9.png)
 
@@ -184,9 +184,24 @@ groups
 
 This command will list out all the groups Ubuntu belongs to.
 
-![id](images/image11.png)
+![List of Groups](images/image11.png)
 
 Ubuntu is in seven groups: `ngoj`, `adm`, `cdrom`, `sudo`, `dip`, `plugdev`, and `lxd`. 
+
+## 13. Giving a User the Ability to Execute Sudo Commands
+
+**Command:**
+
+```bash
+sudo usermod -aG sudo <username>
+```
+
+Using this command, I can make a user run `sudo` commands by adding them into the `sudo` group.
+- `-aG` means: append (`-a`) the user to a specific group (`-G`).
+
+![id](images/image12.png)
+
+In this example, I added `sally` to the `sudo` group. To test if she can execute sudo command, I added a new user, `evan`, under her account. I then checked `evan`'s group membership with the command: `groups evan`, which confirmed that this user was successfully created.
 
 
 
