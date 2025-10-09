@@ -83,12 +83,12 @@ There are two options to create a new user in Linux:
 
 **Command 1:**
 ```bash
-sudo useradd username
+sudo useradd <username>
 ```
 
 **Command 2:**
 ```bash
-sudo adduser username
+sudo adduser <username>
 ```
 
 The first option, `sudo useradd username`,
@@ -97,6 +97,22 @@ is a built in Linux Command that directly adds a new user to the /etc/passwd fil
 The second option, `sudo adduser username`,
 is a Perl script that utilizes useradd, and it guided me through creating a home directory and a password for the new user.
 
-
 ![useradd and adduser](images/image5.png)
+
+In this picture, I added *bobby* with `useradd` and *sally* with `adduser`.
+
+## 6. Changing the Current User
+
+**Command:**
+
+```bash
+su <username>
+```
+
+Using this command will switch the current user to another user.
+
+![Switching Users](images/image6.png)
+
+Here, I changed my current user to sally. In order to do this, however, I had to enter sally's password.
+
 
