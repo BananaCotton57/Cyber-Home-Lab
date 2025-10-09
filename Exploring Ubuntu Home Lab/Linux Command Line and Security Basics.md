@@ -131,11 +131,22 @@ sudo userdel earl
 
 Returning to my original user, `ngoj`, I added `earl` as a new user, and then used the command `sudo userdel earl`, to delete the user.
 
-![Deleting Users](images/image8.png)
+![Deleting User](images/image8.png)
 
 **Note:**
 
 The additional commands`less /etc/passwd` and `ps -u earl`, are not necessary for this task and can be ignored.
+
+## 9. Changing a User's Password
+
+**Command:**
+```bash
+sudo passwd <username>
+```
+
+Using the command above, I changed sally's password. To check if her password successfully changed, I logged into her account using the new password.
+
+![Changing User Password](images/image9.png)
 
 
 
