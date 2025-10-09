@@ -284,6 +284,31 @@ For this file:
 
 - Other users can only read the file.
 
+**Command (Changing Permissions):**
+
+```bash
+chmod <u, g, o, a> <-, +> <file, directory>
+```
+
+This command will change the permissions of a file. The first argument can take in a user, `u`, a group, `g`, other users, `o`, or all, `a`. The second argument can take in `+` for giving access or `-` for removing access. The last argument can take in either a file or directory.
+
+![Changing Permissions of a File](images/image19.png)
+
+Here, I gave the group owner to be able to execute the file.
+
+
+## 19. Viewing the Access Control List of a File
+
+**Command:**
+```bash
+getfacl <file>
+```
+
+Unlike `ls -la <file>`, this command allows me to not only view the permissions for the owner, the group owner, and other users, but it also lets me view permissions for individual users or groups. 
+
+![Access Control List](images/image20.png)
+
+No access control lists are set for this file currently.
 
 
 
