@@ -76,3 +76,33 @@ sudo su root
 Using this command switches the current user, ```ngoj```, to the root user. The prompt of the root user has a different color and style from a normal user, and it also is indicated by a ```#``` instead of ```$```.
 
 ![Root User](images/image4.png)
+
+## 5. Creating New Users
+
+There are two options to create a new user in Linux:
+
+**Command 1:**
+```bash
+sudo useradd username
+```
+
+**Command 2:**
+```bash
+sudo adduser username
+```
+
+The first option, 
+```bash 
+sudo useradd username 
+```
+is a built in Linux Command that directly adds a new user to the /etc/passwd file, but it does not create a home directory or a password for the user. 
+
+he second option,
+```bash 
+sudo adduser username 
+```
+is a Perl script that utilizes useradd, and it guided me through creating a home directory and a password for the new user.
+
+
+![useradd and adduser](images/image5.png)
+
