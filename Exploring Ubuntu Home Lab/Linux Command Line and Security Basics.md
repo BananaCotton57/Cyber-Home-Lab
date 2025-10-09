@@ -241,7 +241,7 @@ I added `sally` to the `cybersec` group and confirmed that she was in the group 
 ls -ld <directory>
 ```
 
-Using this command will let me check the permissions for a single directory.
+Using this command will let me check the permissions for a specified directory.
 
 ![Permissions of a Directory](images/image15.png)
 
@@ -249,8 +249,11 @@ In my case, I used the command, `mkdir lab1`, to create a new directory called `
 
 For this directory:
 - There is a `d` at the start of the permissions, indicating that this is a directory.
+
 - The owner, `ngoj`, can read, write, and execute the directory.
+
 - The group owner, `ngoj`, can also read, write, and execute the directory.
+
 - Other users can only read and execute the directory.
 
 ## 17. Creating an Executable Bash File
@@ -260,6 +263,26 @@ For this directory:
 
 To start, I used `vi` to create my `helloWorld` file using the command `vi helloWorld`. Next, in the file, I had to put a shebang, `#!/bin/bash`, at the top of the file to indicate that this file is a bash file. Then, I wrote the command, `echo "Hello World!"` to print the string, `Hello World!` in the terminal. After, I set the permission for this file to be executable for the owner using the command, `chmod u+x helloWorld`. Finally, I executed the bash file by using the command, `./helloWorld`, which printed the string as expected.
 
+## 18. Checking and Changing the Permissions of the Bash File
+
+**Command (Checking):**
+
+```bash
+ls -la <file>
+```
+
+This would display the file permissions for a specified file. The command is similar to displaying a specified directory.
+
+![Permissions of a File](images/image18.png)
+
+For this file:
+- Instead of a `d`, the start of the permissions has a `-`, showing that this is a file's permissions and not a directory's.
+
+- The owner, `ngoj`, can read, write, and execute the file.
+
+- The group owner, `ngoj`, can only read and write the file.
+
+- Other users can only read the file.
 
 
 
