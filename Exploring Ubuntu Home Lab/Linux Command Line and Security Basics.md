@@ -91,16 +91,10 @@ sudo useradd username
 sudo adduser username
 ```
 
-The first option, 
-```bash 
-sudo useradd username 
-```
+The first option, `sudo useradd username`,
 is a built in Linux Command that directly adds a new user to the /etc/passwd file, but it does not create a home directory or a password for the user. 
 
-he second option,
-```bash 
-sudo adduser username 
-```
+The second option, `sudo adduser username`,
 is a Perl script that utilizes useradd, and it guided me through creating a home directory and a password for the new user.
 
 
