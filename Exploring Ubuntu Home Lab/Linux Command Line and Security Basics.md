@@ -243,14 +243,22 @@ ls -ld <directory>
 
 Using this command will let me check the permissions for a single directory.
 
-![Permissions of a Directory](images/image14.png)
+![Permissions of a Directory](images/image15.png)
 
 In my case, I used the command, `mkdir lab1`, to create a new directory called `lab1` in my home directory. Then, I used the command `ls -ld lab1` to check the permissions. 
 
 For this directory:
+- There is a `d` at the start of the permissions, indicating that this is a directory.
 - The owner, `ngoj`, can read, write, and execute the directory.
 - The group owner, `ngoj`, can also read, write, and execute the directory.
 - Other users can only read and execute the directory.
+
+## 17. Creating an Executable Bash File
+
+![Executing the Bash File](images/image16.png)
+![Executable File](images/image17.png)
+
+To start, I used `vi` to create my `helloWorld` file using the command `vi helloWorld`. Next, in the file, I had to put a shebang, `#!/bin/bash`, at the top of the file to indicate that this file is a bash file. Then, I wrote the command, `echo "Hello World!"` to print the string, `Hello World!` in the terminal. After, I set the permission for this file to be executable for the owner using the command, `chmod u+x helloWorld`. Finally, I executed the bash file by using the command, `./helloWorld`, which printed the string as expected.
 
 
 
