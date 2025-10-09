@@ -33,20 +33,24 @@ This command lists all the packages on my system that have available updates. Fo
 
 # 2. Updating and Upgrading the system
 
-**Command for updating:**
+**Command (update):**
 ```bash
 sudo apt update
 ```
 
-Using this command will download the package information from all my configured sources.
+Using this command will download the latest package information from all my configured sources. This command will not upgrade any of those packages.
 
 ![Command to update](images/image2.png)
 
-**Command for upgrading:**
+**Command (upgrade):**
 ```bash
 sudo apt upgrade
 ```
 
-This command will act on the downloaded information and upgrade all packages to their latest versions.
+This command will install all packages to their latest versions based on the updated package list.
 
 ![Command to Upgrade](images/image3.png)
+
+**Note:**
+
+One package, ```cloud-init```, was shown as "*held back.*" This is normal behavior for virtual machines and can be ignored.
