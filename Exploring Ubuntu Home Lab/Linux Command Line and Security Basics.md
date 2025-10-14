@@ -321,7 +321,7 @@ This command allows me to set access control lists.
 
 - The first argument can either modify the ACL of a file/directory (`-m`) or remove any ACL entries (`-x`). 
 
-- The second argument specifies the file/directory type. For a user, I can use `u` and for a group, I can use `g`.
+- The second argument specifies the target of the ACL entry: `u` for user and `g` for group.
 
 - The third argument specifies the name of the user or group.
 
