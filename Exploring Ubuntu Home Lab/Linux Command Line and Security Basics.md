@@ -330,7 +330,7 @@ This command allows me to set access control lists.
 
 ![Getting Access Control List](images/image21.png)
 
-I used the `setfacl` command to give the user, `sally`, read and write permissions on the `helloWorld` file. To verify, I used the command `getfacl helloWorld`. The output generated now has `user:sally:rw-`, meaning that sally has been successfully given read and write permissions on the file.
+I used the `setfacl` command to give the user, `sally`, read and write permissions on the `helloWorld` file. To verify, I used the command `getfacl helloWorld`, and the output generated now has `user:sally:rw-`, meaning that sally has been successfully given read and write permissions on the file.
 
 
 
