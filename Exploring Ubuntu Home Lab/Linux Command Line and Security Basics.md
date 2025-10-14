@@ -319,15 +319,15 @@ setfacl <-m, -x> <u, g>:<name>:<r,w,x> <file, directory>
 
 This command allows me to set access control lists. 
 
-The first argument can either modify the ACL of a file/directory (`-m`) or remove any ACL entries (`-x`). 
+- The first argument can either modify the ACL of a file/directory (`-m`) or remove any ACL entries (`-x`). 
 
-The second argument specifies the file/directory type. For a user, I can use `u` and for a group, I can use `g`.
+- The second argument specifies the file/directory type. For a user, I can use `u` and for a group, I can use `g`.
 
-The third argument specifies the name of the user or group.
+- The third argument specifies the name of the user or group.
 
-The fourth argument specifies whether to give the user/group read, write, or execute permissions
+- The fourth argument specifies whether to give the user/group read, write, or execute permissions
 
-The final argument specifies the name of the file/directory.
+- The final argument specifies the name of the file/directory.
 
 ![Getting Access Control List](images/image21.png)
 
