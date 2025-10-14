@@ -323,9 +323,8 @@ This command allows me to set access control lists.
 
 - The second argument specifies the target of the ACL entry: `u` for user and `g` for group.
 
-- The third argument specifies the name of the user or group.
+- The third argument specifies the name of the user or group, and it also specifies to give the user/group read, write, or execute permissions.
 
-- The fourth argument specifies whether to give the user/group read, write, or execute permissions
 
 - The final argument specifies the name of the file/directory.
 
