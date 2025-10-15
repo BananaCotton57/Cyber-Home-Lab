@@ -258,10 +258,61 @@ For this directory:
 
 ## 17. Creating an Executable Bash File
 
-![Executing the Bash File](images/image16.png)
+### Step 1: Create the file
+
+**Command:**
+
+```bash
+vi <file>
+```
+
+This command will open a new named file using the `vi` editor.
+
+For my case, I used it to create a file named `helloWorld.`
+
+### Step 2: Add the Shebang
+
+This shebang, `#!/bin/bash`, is written on top of my file to indicate that this is a Bash script.
+
+### Step 3: Write the Commands
+
+**Command:**
+
+```bash
+echo <string>
+```
+
+Typing this statement will print out a custom string in the terminal.
+
+In my case, I typed `echo "Hello World!"` in my Bash script.
+
 ![Executable File](images/image17.png)
 
-To start, I used `vi` to create my `helloWorld` file using the command `vi helloWorld`. Next, in the file, I had to put a shebang, `#!/bin/bash`, at the top of the file to indicate that this file is a bash file. Then, I wrote the command, `echo "Hello World!"` to print the string, `Hello World!` in the terminal. After, I set the permission for this file to be executable for the owner using the command, `chmod u+x helloWorld`. Finally, I executed the bash file by using the command, `./helloWorld`, which printed the string as expected.
+### Step 4: Make the File Executable
+
+**Command:**
+
+```bash
+chmod u+x <file>
+```
+
+This statement will give the owner permission to execute the file.
+
+I used it to make my file, `helloWorld`, executable.
+
+### Step 5: Make the File Executable
+
+**Command:**
+
+```bash
+./<file>
+```
+
+This will run the script of my file.
+
+I used this to run the `helloWorld` file and print `Hello World!` in the terminal.
+
+![Executing the Bash File](images/image16.png)
 
 ## 18. Checking and Changing the Permissions of the Bash File
 
