@@ -268,7 +268,7 @@ vi <file>
 
 This command will open a new named file using the `vi` editor.
 
-For my case, I used it to create a file named `helloWorld.`
+For my case, I used it to create a file named `helloWorld`.
 
 ### Step 2: Add the Shebang
 
