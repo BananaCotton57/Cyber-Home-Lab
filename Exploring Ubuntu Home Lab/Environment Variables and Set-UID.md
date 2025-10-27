@@ -1,4 +1,4 @@
-### Lab Source
+# Lab Source
 This lab follows the SEED Lab exercise: [Environment Variable and Set-UID Lab](https://seedsecuritylabs.org/Labs_20.04/Files/Environment_Variable_and_SetUID/Environment_Variable_and_SetUID.pdf), which provides instructions for exploring environment variables and Set-UID behavior in Linux.
 
 ## 1. Manipulating Environment Variables
