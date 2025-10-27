@@ -30,3 +30,5 @@ unset <ENV>
 This command will remove an environment variable's value.
 
 ![Setting and Unsetting a environment variable's value](envimages/envimage3.png)
+
+Here, I set an environment variable named, `FRUIT`, to the value,`Cantaloupe`, and then printed using `echo $FRUIT` to verify it was set correctly. Once I confirmed, I used unset to remove the environment variable's value and then printed its value again, resulting in no output.
