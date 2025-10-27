@@ -88,7 +88,9 @@ From what I have gathered, passing `NULL` for the third argument of `execve()` p
 
 This section explores how environment variables are affected using the `system()` function.
 
-The function is used to execute a command like `execve()`, but instead of directly executing it, it uses the shell to execute it through `/bin/sh -c <command>`.
+The function is used to execute a command like `execve()`, but instead of directly executing it, it uses the shell to execute it through ```bash
+/bin/sh -c <command>
+```.
 
 
 
