@@ -82,7 +82,13 @@ Running this version of the program resulted in a list on environment variables 
 
 ![Running the second execve() Program](envimages/envimage10.png)
 
-From what I have gathered, passing `NULL` for the third argument of `execve()` prevents any environment variables being passed to the new program. When `environ` is passed instead, the new program inherits the environment variables from the calling process.Therefore, execve() does not automatically inherit environment variables. They must be explicitly provided first.
+From what I have gathered, passing `NULL` for the third argument of `execve()` prevents any environment variables being passed to the new program. When `environ` is passed instead, the new program inherits the environment variables from the calling process. Therefore, execve() does not automatically inherit environment variables. They must be explicitly provided first.
+
+## 4. Environment Variables and `system()`
+
+This section explores how environment variables are affected using the `system()` function.
+
+The function is used to execute a command like `execve()`, but instead of directly executing it, it uses the shell to execute it through `/bin/sh -c <command>`.
 
 
 
