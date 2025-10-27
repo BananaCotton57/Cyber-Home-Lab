@@ -100,5 +100,7 @@ I then compiled and ran this program, which produced a list of environment varia
 
 What this tells me is regardless of whether arguments are provided to pass environment variables, `system()` automatically inherits the environment variables of the calling process.
 
+## 5. Environment Variables and Set-UID Programs
+
 
 
