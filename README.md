@@ -10,5 +10,5 @@ This repository showcases my cybersecurity home lab projects, which are a collec
 - [Exploring Ubuntu Home Lab](Exploring%20Ubuntu%20Home%20Lab/Linux%20Command%20Line%20and%20Security%20Basics.md)
 
 ### 2. Environment Variables
-- [Environment Variables Lab](Environment%Variable%20Lab/Environment%20Variables%20and%20Set-UID%20.md)
+- [Environment Variables Lab](Environment%20Variables%20Lab/Environment Variables%20and%20Set-UID.md)
 
