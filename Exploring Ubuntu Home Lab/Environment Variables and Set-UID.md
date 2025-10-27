@@ -40,17 +40,23 @@ Here, I set an environment variable named, `FRUIT`, to the value,`Cantaloupe`, a
 
 This section highlights how a child process inherits its environment variables from its parent process. 
 
-First, I compiled and ran the program, `myprintenv.c` provided in `Labsetup.zip`. Compiling it with `gcc myprintenv.c` produced an executable named `a.out`.
+Unix uses `fork()` to create child processes. These are processes are duplicates from the parents, but several things are not inherited. I wanted to know if child processes inherit environment variables.
+
+First, I compiled and ran the program, `myprintenv.c` provided in `Labsetup.zip`. This program prints out the environment variables available from either a child or a parent process. Initially, this program prints the child process's environment variables.
 
 ![myprintenv.c](envimages/envimage4.png)
 
-I ran `a.out` and redirected the output to a file using `./a.out > file`. 
+Compiling `myprintenv.c` with `gcc myprintenv.c` produced an executable named `a.out`.
 
-Next, I had to modify the same program, `myprintenv.c` and repeat the same steps as before. The output from this second run was saved to another file named `file2`.
+I then ran `a.out` and redirected the output to a file using `./a.out > file`. 
+
+Next, I had to modify the same program, `myprintenv.c` and repeat the same steps as before. This time, it was modified to now print the parent process's environment variables. The output from this second run was saved to another file named `file2`.
 
 ![Second myprintenv.c](envimages/envimage5.png)
 
 Finally, using the `diff` command, I compared the outputs from `file` and `file2`.
 
 ![diff output](envimages/envimage6.png)
+
+Running `diff file file2` resulted in no output in the console, meaning that the environment variables from `file` and `file2` were the same and that children processes to inherit environment variables from their parents.
 
