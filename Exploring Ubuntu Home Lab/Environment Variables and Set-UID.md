@@ -1,3 +1,6 @@
+### Lab Source
+This lab follows the SEED Lab exercise: [Environment Variable and Set-UID Lab](https://seedsecuritylabs.org/Labs_20.04/Files/Environment_Variable_and_SetUID/Environment_Variable_and_SetUID.pdf), which provides instructions for exploring environment variables and Set-UID behavior in Linux.
+
 ## 1. Manipulating Environment Variables
 
 **Command (Print):**
@@ -32,3 +35,5 @@ This command will remove an environment variable's value.
 ![Setting and Unsetting a environment variable's value](envimages/envimage3.png)
 
 Here, I set an environment variable named, `FRUIT`, to the value,`Cantaloupe`, and then printed using `echo $FRUIT` to verify it was set correctly. Once I confirmed, I used unset to remove the environment variable's value and then printed its value again, resulting in no output.
+
+## 2. Passing Environment Variables from Parent Process to Child Process
