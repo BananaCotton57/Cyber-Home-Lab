@@ -88,7 +88,17 @@ From what I have gathered, passing `NULL` for the third argument of `execve()` p
 
 This section explores how environment variables are affected using the `system()` function.
 
-The function is used to execute a command like `execve()`, but instead of directly executing it, it uses the shell to execute it through `/bin/sh -c \<command\>`.
+The function is used to execute a command like `execve()`, but instead of directly executing it, it uses the shell to execute it through: `/bin/sh -c &lt;command&gt;`.
+
+I wrote a program called `systemtest.c` to test out the `system()` function as shown below.
+
+![Program to Test system()](envimages/envimage11.png)
+
+I then compiled and ran this program, which produced a list of environment variables.
+
+![Program to Test system() Output](envimages/envimage12.png)
+
+What this tells me is regardless of whether arguments are provided to pass environment variables, `system()` automatically inherits the environment variables of the calling process.
 
 
 
