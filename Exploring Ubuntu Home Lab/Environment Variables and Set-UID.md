@@ -50,7 +50,7 @@ Compiling `myprintenv.c` with `gcc myprintenv.c` produced an executable named `a
 
 I then ran `a.out` and redirected the output to a file using `./a.out > file`. 
 
-Next, I had to modify the same program, `myprintenv.c` and repeat the same steps as before. This time, it was modified to now print the parent process's environment variables. The output from this second run was saved to another file named `file2`.
+Next, I had to modify the same program, `myprintenv.c` and repeat the same steps as before. This time, I modified it to now print the parent process's environment variables. The output from this second run was saved to another file named `file2`.
 
 ![Second myprintenv.c](envimages/envimage5.png)
 
@@ -58,5 +58,5 @@ Finally, using the `diff` command, I compared the outputs from `file` and `file2
 
 ![diff output](envimages/envimage6.png)
 
-Running `diff file file2` resulted in no output in the console, meaning that the environment variables from `file` and `file2` were the same and that children processes to inherit environment variables from their parents.
+Running `diff file file2` resulted in no output in the console, meaning that the environment variables from `file` and `file2` were the same. I concluded that child processes inherit environment variables from their parent processes.
 
