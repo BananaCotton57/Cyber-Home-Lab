@@ -37,3 +37,20 @@ This command will remove an environment variable's value.
 Here, I set an environment variable named, `FRUIT`, to the value,`Cantaloupe`, and then printed using `echo $FRUIT` to verify it was set correctly. Once I confirmed, I used unset to remove the environment variable's value and then printed its value again, resulting in no output.
 
 ## 2. Passing Environment Variables from Parent Process to Child Process
+
+This section highlights how a child process inherits its environment variables from its parent process. 
+
+First, I compiled and ran the program, `myprintenv.c` provided in `Labsetup.zip`. Compiling it with `gcc myprintenv.c` produced an executable named `a.out`.
+
+![myprintenv.c](envimages/envimage4.png)
+
+I ran `a.out` and redirected the output to a file using `./a.out > file`. 
+
+Next, I had to modify the same program, `myprintenv.c` and repeat the same steps as before. The output from this second run was saved to another file named `file2`.
+
+![Second myprintenv.c](envimages/envimage5.png)
+
+Finally, using the `diff` command, I compared the outputs from `file` and `file2`.
+
+![diff output](envimages/envimage6.png)
+
