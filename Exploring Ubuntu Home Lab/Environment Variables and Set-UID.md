@@ -60,3 +60,30 @@ Finally, using the `diff` command, I compared the outputs from `file` and `file2
 
 Running `diff file file2` resulted in no output in the console, meaning that the environment variables from `file` and `file2` were the same. I concluded that child processes inherit environment variables from their parent processes.
 
+## 3. Environment Variables and `execve()`
+
+This section examines how environment variables are affected when a program is executed using the `execve()` function.
+
+This function runs a new program in the calling process. I am interested if the environment variables are inherited by this new program.
+
+From the `Labsetup.zip` folder, I compiled a program named `myenv.c`, which is shown in the image below. 
+
+![First execve() Program](envimages/envimage7.png)
+
+I then ran this program and got the output below, where nothing was printed in the console.
+
+![Running the first execve() Program](envimages/envimage8.png)
+
+I then modified `myenv.c` to where I changed the third argument, `NULL`, to `environ`.
+
+![Second execve() Program](envimages/envimage9.png)
+
+Running this version of the program resulted in a list on environment variables getting printed in the console.
+
+![Running the second execve() Program](envimages/envimage10.png)
+
+From what I have gathered, passing `NULL` for the third argument of `execve()` prevents any environment variables being passed to the new program. When `environ` is passed instead, the new program inherits the environment variables from the calling process.Therefore, execve() does not automatically inherit environment variables. They must be explicitly provided first.
+
+
+
+
