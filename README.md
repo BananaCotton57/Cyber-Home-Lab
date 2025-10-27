@@ -7,7 +7,7 @@ This repository showcases my cybersecurity home lab projects, which are a collec
 ## Table of Contents
 
 ### 1. Linux System Administration and Security Basics
-- [Exploring Ubuntu Home Lab](Exploring%20Ubuntu%20Home%20Lab/Linux%20Command%20Line%20and%20Security%20Basics.md)
+- [Exploring Ubuntu Home Lab](Exploring%Linux%Security%20and%20Access%20Control%20Lab/Linux%20Command%20Line%20and%20Security%20Basics.md)
 
 ### 2. Environment Variables
 - [Environment Variables Lab](Environment%20Variables%20Lab/Environment%20Variables%20and%20Set-UID.md)
