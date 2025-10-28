@@ -100,7 +100,42 @@ I then compiled and ran this program, which produced a list of environment varia
 
 What this tells me is regardless of whether arguments are provided to pass environment variables, `system()` automatically inherits the environment variables of the calling process.
 
-## 5. Environment Variables and Set-UID Programs
+## 5. Environment Variables and `Set-UID` Programs
+
+`Set-UID` programs are special programs that run with the privileges of the file owner, rather than the privileges of the user that executes them. This allows users to perform tasks that normally would need higher permissions, which could be risky if a user acts maliciously. I wanted to know if environment variables from the user's process are inherited by the `Set-UID` program's process.
+
+To start, I first created a program named `printprocessenvs` that prints out all the environment variables in the current process.
+
+![Program to Print all ENV's](envimages/envimage13.png)
+
+Then, I compiled this program, changed its owner to be the root user, and made it into a `Set-UID` Program.
+
+![Program as a `Set-UID`](envimages/envimage14.png)
+
+Once I that was done, I set three environment variables: `PATH`, `LD_LIBRARY_PATH`, and my own custom environment variable.
+
+- `PATH` was set to be `/some/test:$PATH`.
+- `LD_LIBRARY_PATH` was set to be `/home/attacker/evil_libs`.
+- An environment variable, `SHOE`, was set to be `Sneaker`.
+
+I then ran the `Set-UID` program, which outputted a list of environment variables.
+
+![Output of `Set-UID`](envimages/envimage15.png)
+
+To easily check if the variables I set were in this output, I ran the command: `./printprocessenvs | grep <Environment Variable>` for each environment variable.
+
+![`PATH` Environment Variable](envimages/envimage16.png)
+![`LD_LIBRARY_PATH` Environment Variable](envimages/envimage17.png)
+![`SHOE` Environment Variable](envimages/envimage18.png)
+
+What I found was:
+
+- The modified `PATH` value was displayed.
+- `LD_LIBRARY_PATH` did not have an output.
+- The `SHOE` environment variable and value were displayed.
+
+From these outputs, I determined that `Set-UID` programs do inherit some of the user's environment variables, but not all of them. It was surprising to see that one of the variables, `LD_LIBRARY_PATH`, was not inherited, but this could be because an attacker can set that environment variable to a fake library with malicious code.
+
 
 
 
