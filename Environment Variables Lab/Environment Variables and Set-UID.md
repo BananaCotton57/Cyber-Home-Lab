@@ -102,13 +102,13 @@ What this tells me is regardless of whether arguments are provided to pass envir
 
 ## 5. Environment Variables and `Set-UID` Programs
 
-`Set-UID` programs are special programs that run with the privileges of the file owner, rather than the privileges of the user that executes them. This allows users to perform tasks that normally would need higher permissions, which could be risky if a user acts maliciously. I wanted to know if environment variables from the user's process are inherited by the `Set-UID` program's process.
+`Set-UID` programs are special programs that run with the privileges of the file owner, rather than the privileges of the user that executes them. This allows users to perform tasks that normally would need higher permissions, which could be risky if a user acts maliciously. I wanted to know if environment variables from the user's process are inherited by the `set-UID` program's process.
 
 To start, I first created a program named `printprocessenvs` that prints out all the environment variables in the current process.
 
 ![Program to Print all ENV's](envimages/envimage13.png)
 
-Then, I compiled this program, changed its owner to be the root user, and made it into a `Set-UID` Program.
+Then, I compiled this program, changed its owner to be the root user, and made it into a `set-UID` Program.
 
 ![Program as a `Set-UID`](envimages/envimage14.png)
 
@@ -118,7 +118,7 @@ Once I that was done, I set three environment variables: `PATH`, `LD_LIBRARY_PAT
 - `LD_LIBRARY_PATH` was set to be `/home/attacker/evil_libs`.
 - An environment variable, `SHOE`, was set to be `Sneaker`.
 
-I then ran the `Set-UID` program, which outputted a list of environment variables.
+I then ran the `set-UID` program, which outputted a list of environment variables.
 
 ![Output of `Set-UID`](envimages/envimage15.png)
 
@@ -134,7 +134,43 @@ What I found was:
 - `LD_LIBRARY_PATH` did not have an output.
 - The `SHOE` environment variable and value were displayed.
 
-From these outputs, I determined that `Set-UID` programs do inherit some of the user's environment variables, but not all of them. It was surprising to see that one of the variables, `LD_LIBRARY_PATH`, was not inherited, but this could be because an attacker can set that environment variable to a fake library with malicious code.
+From these outputs, I determined that `set-UID` programs do inherit some of the user's environment variables, but not all of them. It was surprising to see that one of the variables, `LD_LIBRARY_PATH`, was not inherited, but this could be because an attacker can set that environment variable to a fake library with malicious code.
+
+## 6. The PATH Environment Variable and `Set-UID` Programs
+
+This section demonstrates how an attacker can exploit the environment variable, `PATH`, in `set-UID` programs to run malicious programs and gain higher privileges.
+
+Calling `system()` within a`set-UID` program can be risky as its invoked shell can be affected by environment variables. This could allow an attacker to run unintended programs with elevated privileges.
+
+To illustrate this risk, I created a vulnerable program named `systemtest2` to run the `ls` command.
+
+![Vulnerable Program](envimages/envimage19.png)
+
+Next, I made this program into a `set-UID` program owned by `root`.
+
+![Vulnerable Program as a `Set-UID`](envimages/envimage20.png)
+
+Then, I created the malicious program named `ls`(same name as intended command in the vulnerable program), which attempts to execute the root shell when executed.
+
+![Malicious Program](envimages/envimage21.png)
+
+After compiling this program, I modified the `PATH` environment variable, where I ran the command: `export PATH=.:$PATH`. What this tells the `PATH` environment variable to do is to check the current directory the user is in before checking the other system directories.
+
+![Manipulating the `PATH` Environment Variable](envimages/envimage23.png)
+
+Finally, I could execute my vulnerable program, which resulted in the output below.
+
+![Output of Running Vulnerable Program](envimages/envimage24.png)
+
+From what I observed, it the malicious program did execute, but the `root` shell was not opened. Instead, a regular `dash` shell has been opened as indicated by the single `$`. This is a preventative measure so that normal users cannot get to the `root` shell.
+
+If I try to type in the `ls` command, a `dash` shell is opened like with running the vulnerable program.
+
+![Output of Running `ls`](envimages/envimage25.png)
+
+To summarize, when the vulnerable program ran, the `system()` function opened a new shell and looked for the `ls` command in the `PATH` environment variable. Because `PATH` was manipulated to first check my current directory first before, it found a malicious program that was also named `ls` and executed it. Although a `dash` shell instead of the `root` shell, this example still illustrates the risk with `set-UID` root programs.
+
+
 
 
 
