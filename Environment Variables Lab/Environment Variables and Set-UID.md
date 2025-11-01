@@ -122,7 +122,7 @@ I then ran the `set-UID` program, which outputted a list of environment variable
 
 ![Output of `Set-UID`](envimages/envimage15.png)
 
-To easily check if the variables I set were in this output, I ran the command: `./printprocessenvs | grep <Environment Variable>` for each environment variable.
+To easily check if the variables I set were in this output, I ran the command `./printprocessenvs | grep <Environment Variable>` for each environment variable.
 
 ![`PATH` Environment Variable](envimages/envimage16.png)
 ![`LD_LIBRARY_PATH` Environment Variable](envimages/envimage17.png)
@@ -136,7 +136,7 @@ What I found was:
 
 From these outputs, I determined that `set-UID` programs do inherit some of the user's environment variables, but not all of them. It was surprising to see that one of the variables, `LD_LIBRARY_PATH`, was not inherited, but this could be because an attacker can set that environment variable to a fake library with malicious code.
 
-## 6. The PATH Environment Variable and `Set-UID` Programs
+## 6. The `PATH` Environment Variable and `Set-UID` Programs
 
 This section demonstrates how an attacker can exploit the environment variable, `PATH`, in `set-UID` programs to run malicious programs and gain higher privileges.
 
@@ -170,8 +170,53 @@ If I try to type in the `ls` command, a `dash` shell is opened like with running
 
 To summarize, when the vulnerable program ran, the `system()` function opened a new shell and looked for the `ls` command in the `PATH` environment variable. Because `PATH` was manipulated to first check my current directory first before, it found a malicious program that was also named `ls` and executed it. Although a `dash` shell instead of the `root` shell, this example still illustrates the risk with `set-UID` root programs.
 
+## 7. The `LD_PRELOAD` Environment Variable and `Set-UID` Programs
 
+This section explains how the dynamic loader/linker can be exploited to run malicious programs.
 
+The dynamic loader/linker is a component of the operating system that is responsible for loading and linking shared libraries required by an executable at run time. One way it does this is by using the environment variable, `LD_PRELOAD`, which specifies additional, user-specified, shared libraries to be loaded before others. If misused, this variable can allow attackers to inject and execute malicious code.
+
+To present how this environment variable can be manipulated, the following experiment was performed below.
+
+A program named `mylib.c` was created to implement a fake `sleep()` function.
+
+![Fake Library Program](envimages/envimage26.png)
+
+I compiled this program into a library using the commands: `gcc -fPIC -g -c mylib.c` and `  gcc -shared -o libmylib.so.1.0.1 mylib.o -lc`.
+
+Once compiled, I set the `LD_PRELOAD` environment variable to point to my fake library using the command: `export LD_PRELOAD=./libmylib.so.1.0.1`.
+
+I then created and compiled a program, `myprog.c` that uses the `sleep()` function.
+
+![Program Using a Function from the Fake Library](envimages/envimage27.png)
+
+This program also prints the real user ID (`RUID`) and the effective user ID (`EUID`), which will be discussed later.
+
+After creating and compiling `myprog.c`, I ran it under four conditions:
+
+1. As a regular program, run by a normal user.
+
+![Running `myprog.c` Under Condition 1](envimages/envimage28.png)
+
+2. As a`set-UID` root program, run by a normal user.
+
+![Running `myprog.c` Under Condition 2](envimages/envimage29.png)
+
+3. As a `set-UID` root program, run by the root user.
+
+![Running `myprog.c` Under Condition 3](envimages/envimage30.png)
+
+4. As a `set-UID` normal-user program, run by a different normal user.
+
+![Running `myprog.c` Under Condition 4](envimages/envimage31.png)
+
+From the outputs, conditions 1 and 3 ran the `sleep()` function from the fake library, while conditions 2 and 4 ran the real `sleep()` function.
+
+This difference occurs because the dynamic linker has a security mechanism to prevent it from loading malicious or unauthorized libraries. Specifically, for `set-UID` programs, it ignores the `LD_PRELOAD` (and `LD_LIBRARY_PATH`) environment variables when the effective user ID (`EUID`) and the real user ID (`RUID`) differ. In these cases, the linker will load in trusted libraries instead of user-specified ones.
+
+The only exception occurs when the program owner runs the `set-UID` with `LD_PRELOAD` pointing to a fake library, ass occurred in condition 3.
+
+For regular programs, the dynamic linker uses the `LD_PRELOAD` environment variable, so user-specified libraries can be loaded normally.
 
 
 

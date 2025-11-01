@@ -197,7 +197,7 @@ sudo usermod -aG sudo <username>
 ```
 
 Using this command, I can make a user run `sudo` commands by adding them into the `sudo` group.
-- `-aG` means: append (`-a`) the user to a specific group (`-G`).
+- `-aG` means to append the user (`-a`) to a specific group (`-G`).
 
 ![Giving a User Sudo Commands](images/image12.png)
 
