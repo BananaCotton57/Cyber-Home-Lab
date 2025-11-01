@@ -66,7 +66,7 @@ This section examines how environment variables are affected when a program is e
 
 This function runs a new program in the calling process. I am interested if the environment variables are inherited by this new program.
 
-From the `Labsetup.zip` folder, I compiled a program named `myenv.c`, which is shown in the image below. 
+From the `Labsetup.zip`, I compiled a program named `myenv.c`, which is shown in the image below. 
 
 ![First execve() Program](envimages/envimage7.png)
 
@@ -82,7 +82,7 @@ Running this version of the program resulted in a list on environment variables 
 
 ![Running the second execve() Program](envimages/envimage10.png)
 
-From what I have gathered, passing `NULL` for the third argument of `execve()` prevents any environment variables being passed to the new program. When `environ` is passed instead, the new program inherits the environment variables from the calling process. Therefore, execve() does not automatically inherit environment variables. They must be explicitly provided first.
+From what I have gathered, passing `NULL` for the third argument of `execve()` prevents any environment variables being passed to the new program. When `environ` is passed instead, the new program inherits the environment variables from the calling process. Therefore, `execve()` does not automatically inherit environment variables. They must be explicitly provided first.
 
 ## 4. Environment Variables and `system()`
 
@@ -218,5 +218,32 @@ The only exception occurs when the program owner runs the `set-UID` with `LD_PRE
 
 For regular programs, the dynamic linker always applies the `LD_PRELOAD` environment variable, so user-specified libraries can be loaded normally.
 
+## 8. Invoking External Programs Using `system()` Versus `execve()`
 
+This section focuses on the use of `system()` compared to `execve()`. It does not cover environment variable manipulation.
 
+Both functions can be used to run new programs, but `system()` can be dangerous if used in privileged programs, such as `set-UID` programs, because it invokes a new shell.
+
+The `Labsetup.zip` includes a program named `catall.c`. I first compiled it with `system()` enabled and set it as a `set-UID` root-owned program.
+
+![Program With `system()` Enabled](envimages/envimage32.png)
+
+Once the program was set up, I created two dummy files: `hello.txt` and `randomfile.txt` to use for testing.
+
+I then ran the command: `./catall hello.txt; rm randomfile.txt` which displayed the following output:
+
+![Executing the `catall` Program with `system()`](envimages/envimage33.png)
+
+This displayed the contents of `hello.txt` and also removed `randomfile.txt.`
+
+This behavior demonstrates the dangers of using `system()`. Because `system()` invokes a shell, it interprets the input as a full shell command rather than a single argument. In this case, what was intended to be a single filename argument (`hello.txt`) was treated as two commands (`./catall hello.txt` and `rm randomfile.txt`), allowing unintended actions to occur.
+
+Although in this scenario `randomfile.txt` was removed, `./catall` is a `set-UID` root owned program. If an attacker can control an input to this program, they could modify or delete sensitive files, such as `/etc/passwd`, and break the system.
+
+After testing this program with `system()`, I recompiled it to use `execve()` and repeated the same steps. I created the same dummy files (`hello.txt` and `randomfile.txt`) and ran `./catall hello.txt; rm randomfile.txt`.
+
+This is the output displayed when testing the program with `execve()`:
+
+![Executing the `catall` Program with `system()`](envimages/envimage34.png)
+
+Running `./catall hello.txt; rm randomfile.txt` with `execve()` threw an error stating no such file or directory exists. Unlike `system()`, `execve()` does not invoke a shell, so the input was treated as a single argument, preventing unintended actions such as removing a file.
