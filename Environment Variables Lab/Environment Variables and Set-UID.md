@@ -214,9 +214,9 @@ From the outputs, conditions 1 and 3 ran the `sleep()` function from the fake li
 
 This difference occurs because the dynamic linker has a security mechanism to prevent it from loading malicious or unauthorized libraries. Specifically, for `set-UID` programs, it ignores the `LD_PRELOAD` (and `LD_LIBRARY_PATH`) environment variables when the effective user ID (`EUID`) and the real user ID (`RUID`) differ. In these cases, the linker will load in trusted libraries instead of user-specified ones.
 
-The only exception occurs when the program owner runs the `set-UID` with `LD_PRELOAD` pointing to a fake library, ass occurred in condition 3.
+The only exception occurs when the program owner runs the `set-UID` with `LD_PRELOAD` pointing to a fake library, as occurred in condition 3.
 
-For regular programs, the dynamic linker uses the `LD_PRELOAD` environment variable, so user-specified libraries can be loaded normally.
+For regular programs, the dynamic linker always applies the `LD_PRELOAD` environment variable, so user-specified libraries can be loaded normally.
 
 
 
