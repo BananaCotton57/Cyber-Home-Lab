@@ -10,5 +10,5 @@ This repository showcases my cybersecurity home lab projects, which are a collec
 - [Exploring Linux Security and Access Control Lab](Exploring%20Linux%20Security%20and%20Access%20Control%20Lab/Linux%20Command%20Line%20and%20Security%20Basics.md)
 
 ### 2. Environment Variables and Set-UID
-- [Environment Variables and Set-UID Lab](Environment%20Variables%20Lab/Environment%20Variables%20and%20Set-UID.md)
+- [Environment Variables and Set-UID Lab](Environment%20Variables%20and%20Set-UID%20Lab/Environment%20Variables%20and%20Set-UID.md)
 
