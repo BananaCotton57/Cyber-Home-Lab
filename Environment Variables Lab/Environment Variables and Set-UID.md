@@ -247,3 +247,27 @@ This is the output displayed when testing the program with `execve()`:
 ![Executing the `catall` Program with `system()`](envimages/envimage34.png)
 
 Running `./catall hello.txt; rm randomfile.txt` with `execve()` threw an error stating no such file or directory exists. Unlike `system()`, `execve()` does not invoke a shell, so the input was treated as a single argument, preventing unintended actions such as removing a file.
+
+## 9. Capability Leaking
+
+Sometimes, `set-UID` programs grant elevated permissions for a user when they need to perform certain tasks. Once those privileged operations are completed, these programs often relinquish their privileges if they are no longer needed.
+
+However, one problem that can occur when downgrading privileges is capability leaking, where a user retains privileged capabilities even after those privileges are relinquished.
+
+In this example, a file descriptor is used to illustrate how privilege leakage can occur.
+
+In the `Labsetup.zip` folder, there is a file named `cap_leak.c`, which I compiled, changed its owner to root, and made into a `set-UID` program.
+
+![Capability Leak Program](envimages/envimage35.png)
+
+I also created a dummy system file named `etc/zzz`, which was owned by root and had octal permissions 0644.
+
+After I created the dummy file, I ran the compiled `cap_leak.c` program, to which it opened a `dash` shell and printed a file descriptor number. From that shell, I executed the command, `echo aaaaaaaaaaaa >& 3` and exited. Finally, I inspected `/etc/zzz` and found that the string, `aaaaaaaaaaaa`, had been appended to the file.
+
+![Performing the Capability Leak Attack](envimages/envimage36.png)
+
+To clarify what happened, the program opened a file descriptor with privileges to write to `/etc/zzz` while running as root. It then downgraded its privileges, but the file descriptor that can write to that file was still open for a normal user. Since the descriptor was still open, the user in the unprivileged shell can still write to that file.
+
+In order to prevent a situation like this, the privileged file descriptor should have been closed before downgrading privileges. That way, the user in the unprivileged shell will not have access to it anymore and write to the file.
+
+In general, any `set-UID` program that downgrades privileges should clear any privileged capabilities and ensure no sensitive resources remain accessible to the user.
