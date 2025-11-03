@@ -250,7 +250,7 @@ Running `./catall hello.txt; rm randomfile.txt` with `execve()` threw an error s
 
 ## 9. Capability Leaking
 
-Sometimes, `set-UID` programs grant elevated permissions for a user when they need to perform certain tasks. Once those privileged operations are completed, these programs often relinquish their privileges if they are no longer needed.
+Sometimes, `set-UID` programs grant elevated permissions for a user when they need to perform certain tasks. Once those privileged operations are completed, these programs often relinquish their privileges if they are no longer needed. Typically, this is done by setting the `EUID` to the user's `RUID`.
 
 However, one problem that can occur when downgrading privileges is capability leaking, where a user retains privileged capabilities even after those privileges are relinquished.
 
