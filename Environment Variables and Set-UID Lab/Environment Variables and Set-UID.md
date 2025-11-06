@@ -182,7 +182,7 @@ A program named `mylib.c` was created to implement a fake `sleep()` function.
 
 ![Fake Library Program](envimages/envimage26.png)
 
-I compiled this program into a library using the commands: `gcc -fPIC -g -c mylib.c` and `  gcc -shared -o libmylib.so.1.0.1 mylib.o -lc`.
+I compiled this program into a library using the commands: `gcc -fPIC -g -c mylib.c` and `gcc -shared -o libmylib.so.1.0.1 mylib.o -lc`.
 
 Once compiled, I set the `LD_PRELOAD` environment variable to point to my fake library using the command: `export LD_PRELOAD=./libmylib.so.1.0.1`.
 
