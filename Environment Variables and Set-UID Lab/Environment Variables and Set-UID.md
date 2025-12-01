@@ -12,7 +12,7 @@ printenv <environment variable (optional)>
 - Running `printenv` without any arguments prints all the environment variables.
 - Providing a specific variable's name as an argument will only print that variable's value.
 
-![Printing All Env's](envimages/envimage1.png)
+![Printing All Envs](envimages/envimage1.png)
 
 ![Printing only the PWD env](envimages/envimage2.png)
 
