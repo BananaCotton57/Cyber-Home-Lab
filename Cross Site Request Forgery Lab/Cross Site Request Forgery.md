@@ -126,5 +126,3 @@ When the user submits the form, the browser includes this secret token in the HT
 If the token is missing or different, the request is rejected.
 
 Because pages from a different origin cannot read the secret token (due to the same‑origin policy), an attacker cannot include it in a malicious request. This prevents cross‑site requests from succeeding.
-
-No example was conducted using secret tokens to prevent a CSRF attack from happening.
