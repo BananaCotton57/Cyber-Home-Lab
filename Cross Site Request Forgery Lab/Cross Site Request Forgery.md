@@ -97,13 +97,13 @@ This is an attribute applied to cookies by the server. It tells the browser whet
 
 The possible values are:
 - Strict
-    - Cookie is only sent in a first-party context (when the user is browsing the same site that set the cookie).
-    - Cookies are never sent in cross-site requests.
+    - The cookie is only sent in a first-party context (when the user is browsing the same site that set the cookie).
+    - The cookie is never sent in cross-site requests.
 - Lax
-    - Cookie is not sent on most cross-site requests (like images, scripts, or POST forms).
-    - Cookie is sent on top-level cross-site navigation (user actively requests a page change), such as when the user clicks a link.
+    - The cookie is not sent on most cross-site requests (like images, scripts, or POST forms).
+    - The cookie is sent on top-level cross-site navigation (user actively requests a page change), such as when the user clicks a link.
 - None
-    - Cookie is always sent, regardless of whether the request is first-party or cross-site.
+    - The cookie is always sent, regardless of whether the request is first-party or cross-site.
 
 In the example below, the same-site attribute for our cookie is set as lax. The malicious site still attempts a CSRF attack using an HTTP `POST` request.
 
